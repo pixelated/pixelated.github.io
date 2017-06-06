@@ -1,0 +1,137 @@
+---
+layout: default
+---
+
+<div class="header-band">
+  <header>
+  </header>
+</div>
+
+<div class="logo-band">
+  <section class="logo">
+    <img src="/assets/images/pixelated-logo.svg">
+  </section>
+</div>
+
+<div class="features-band">
+  <section class="features">
+    <div>
+      <h2>Encrypted</h2>
+      <p>Pixelated uses strong and proven PGP encryption for end-to-end encryption of emails. 
+    </div>
+    <div>
+      <h2>Easy-to-use</h2>
+      <p>Pixelated has a modern web interface that fully automates encryption and key management.
+    </div>
+    <div>
+      <h2>Decentralized</h2>
+      <p>Pixelated is straight-forward to install for system adminstrators in an organisation or company.
+    </div>
+  </section>
+</div>
+
+<div class="main-band">
+  <main>
+    <img class="welcome-img" src="/assets/images/welcome.svg"/>
+
+    <h2>Modern email with privacy</h2>
+
+    <p>Pixelated is a software distribution. It gives organizations the means to host an email solution that provides a modern, compelling web interface as well as privacy through proven PGP encryption. With Pixelated, using encryption no longer involves complicated setup procedures or a confusing user experience.
+
+
+    <h2>Pixelated is a response to mass surveillance</h2>
+
+    <p>Email communication is subject to mass dragnet surveillance. The reason such surveillance exists in its current form is because it is so cheap and easy to do. When <i>in transit</i> email is often not protected and can be read in full by anyone with access to the network, at any of the many network nodes the email passes through. When <i>at rest</i> on the server, the email is often not protected either, and can be accessed by targeting the company that runs the mail servers. 
+    
+    <p>The problem is made worse because many individuals and organizations now use proprietary Software as a Service (SaaS) products like Google Mail or Outlook.com for their email, thus concentrating email handling and storage to a small number of companies. This centralisation of email handling allows criminal organisations as well as nation state agencies to access a vast amount of email traffic by targeting just a handful of companies.
+
+    <p>The solution to these problems lies in decentralization and encryption. If we can achieve widespread use of encrypted email it will be too costly and economically unreasonable to routinely intercept the majority of email on the internet. It is likely that a motivated adversary will always find a way to intercept specifically targeted communication, but with encyption and decentralization we should be able to counter mass surveillance on the scale we have to endure today.
+
+    <p>Widespread use of encryption will also show that it is absurd to make the assumption that it is only people with <i>something to hide</i> who use encryption, an argument that we often hear today as justification for attempts to pass legislation that restricts privacy preserving communication.
+
+
+    <h2>Key features</h2>
+
+    <ul>
+      <li>Compelling web-based user interface with fast search and tagging
+      <li>Email encryption with maximum interoperability with existing solutions, i.e. use of GPG/PGP, SMTP/TLS, HKS
+      <li>An organization setup that requires no software to be installed by the end user
+      <li>Fully scripted installation of the complete solution
+      <li>Built on the LEAP platform (<a href="https://www.leap.se">www.leap.se</a>)
+      <li>Source code available on Github under AGPL license (<a href="https://github.com/pixelated">github.com/pixelated</a>)
+    </ul>
+
+  </main>
+</div>
+
+<div class="faq-band">
+  <section class="faq">
+
+    <h2>Frequently asked questions</h2>
+
+    <h3>Where and how does the crypto happen? Where is my private key stored?</h3>
+
+    <p>We run the encryption and decryption routines on the Pixelated server. To be able to do this the keys must be available on the server. Many technical folks out there will tell you that this is bad, and in certain cases they may be right. However, in the end it all boils down to the threat model. In the next answer we explain why using a server-based approach is actually a reasonable idea in our case.</p>
+
+    <h3>My friends say that my private key should stay on my trusted device, why do you store it on the server?</h3>
+    
+    <p>Tools to encrypt email have been around for years, one of the most-used technologies today is PGP, which was first released in 1991. Email itself is such a central part of the Internet and has such a rich ecosystem that it is near impossible to replace with something else. (Remember Google Wave?) Despite all that, encrypted email has never taken off at a large scale because it is too difficult to use.</p>
+
+		<p>Having been at many crypto parties we have experienced bewildered looks when users are confronted with questions about key sizes expressed in bits, when seeing prompts to move the mouse to create <i>entropy</i>, when they are asked to read out <i>key fingerprints</i> to each other to verify that they really have the right key. We have also seen countless examples of private keys being lost, of course, in many cases by users who have no idea what a <i>revocation certificate</i> is, never mind having created one. Then there is the issue of using multiple devices... All of this is so intimidating that most people chose convenience over privacy, convincing themselves that they have nothing to hide and nobody is interested in them anyway.</p>
+		
+    <p>The Pixelated team has made considered choices surrounding cryptography so you don&#39;t have to. It provides a solid setup without bothering the users. And, yes, it is correct that whoever operates the Pixelated server you use can intercept your mail if they are willing to put in some work. However, consider the alternatives: would you rather trust the people who operate the server, people who can actively choose, or would you, because you're reverting to unencrypted email, want to trust any number of parties that you can't chose and don't even know about? We feel that trusting one group of people is vastly preferrable. If you feel you can't trust anyone then your friends are right and you should keep the private keys only on devices you have complete control over and can be sure nobody can tamper with, and make backups, encrypted of course.</p>
+
+    <h3>How much do I need to trust my Pixelated provider? Can an attacker read my mails? Is there a difference to Lavabit?</h3>
+
+    <p>In order to answer this, let&#39;s take a step-by-step look at what happens from the time you log into Pixelated and when an email reaches the server to when you see it in your browser.</p>
+    <ul>
+      <li>When you create your Pixelated account for the first time, Pixelated creates an encryption key on your behalf. This encryption key itself is locked with the password you choose.</li>
+      <li>When an incoming email reaches the server, it is encrypted with your key (metadata and all) and stored in the server&#39;s database</li>
+      <li>When you login to Pixelated, your encryption key is unlocked with the password you supply.</li>
+      <li>When you view the email, it is being decrypted on-the-fly and displayed your browser.</li>
+    </ul>
+    <p>So now let&#39;s think about what that does and does not protect you against:</p>
+    <ul>
+      <li>Your emails are encrypted at rest on the provider&#39;s server. If your provider is being hacked, the attacker can&#39;t get to the contents of your inbox.</li>
+      <li>Your emails are sent encrypted, so if somebody listens to traffic on the wire, they won't see the content of your email, but they will see who the email is for, the subject, and other information about the message. (This is a flaw of the protocol, not ours. Sorry.)</li>
+      <li>Your encryption happens on the server, so if an attacker manipulates the server to record everything happening on it, they could see the contents of your inbox. This attack could be conducted mostly by resourceful adversaries like intelligence services
+        and other nation-states-level attackers. It is an attack on a much greater time scale, which makes it harder to pull off without being detected, and requires more funds and sophistication.</li>
+    </ul>
+
+    <p>Pixelated has similarities to Lavabit&#39;s design and also its shortcomings. In detail here, an email provider has three main adversaries:</p>
+    <ul>
+      <li>An administrator with access to the server.</li>
+      <li>An attacker who can get access to the server.</li>
+      <li>An attacker who can intercept the communication to the server.</li>
+    </ul>
+    <p>Pixelated shares these vulnerabilities, just like a conventional (unencrypted) email service, despite the use of cryptography. The security is anchored to the user-supplied password. And if the operator of the server or an attacker manages to modify the code for Pixelated they could gain access to the password.</p>
+    
+    <p>So there is a legitimate question: Is it this worth the trouble at all? Yes, it is, for two reasons:</p>
+    
+    <p>Reason #1: Just because something does not give you perfect security, that doesn&#39;t mean there&#39;s no value to it. Email is a distributed system. You can use your Pixelated account to exchange encrypted emails with somebody who uses other email encryption based on PGP, e.g. using Apple Mail with the GPG Suite, or Thunderbird with Enigmail. In this use case you know you don't have to trust anyone other than the operator of your Pixelated server.</p>
+    
+    <p>Reason #2: If you don&#39;t want to trust any email provider, Pixelated makes it easy to set up your own email service!</p>
+
+    <h3>What about activists and activist organisations?</h3>
+    
+    <p>Privacy, mass surveillance, and activism are often considered together. Activists have a need for strong privacy (see <a href="https://www.tbray.org/ongoing/When/201x/2014/05/26/Privacy-Levels" target="_blank">Tim Bray&#39;s article on privacy levels</a> for a good discussion of strong vs common privacy) but those who have been specifically targeted have needs that go far beyond what is needed to counter mass surveillance. Thus, a solution that can help an activist defend himself/herself against sustained, targeted surveillance is likely to be so involved that it would be unusable for the majority of email users. We do not think it is possible to build a solution that can be widely used as a regular email solution while also providing the features necessary to counter targeted surveillance. Having said that, Pixelated is built in a way that should allow to derive activist-oriented products from it.</p>
+
+  </section>
+</div>
+
+<div class="status-band">
+  <section class="status">
+    
+    <h2>Status of Pixelated</h2>
+
+    <p>The initial work on Pixelated was done by a team funded by <a href="https://www.thoughtworks.com">ThoughtWorks</a> between July 2014 and June 2017. Pixelated has been used internally and by another organisation, showing that Pixelated and the concepts behind it are reasonable and practical.
+    
+    <p>The outcome from this phase is working software that validates the main hypothesis; namely when the trade-off between encryption and convenience is removed, by making encryption transparent, people will adopt encrypted email.</p>
+    
+    <p>Pixelated is ready to be used even though not all features are completed. The <a href="https://github.com/pixelated/pixelated-user-agent/issues">Github issues</a> on the <b>pixelated-user-agent</b> repository provide an overview of currently in-flight work. A major incomplete feature is Account Recovery, which allows users to regain access to their inbox when they forget their password. For this feature, following the underlying vision for Pixelated, we designed a workflow that balances user friendlyness with security. Debian packages are available as <a href="https://github.com/pixelated/pixelated-user-agent/releases">Github releases</a>.
+
+  
+    <p>Given that the phase during which ThoughtWorks funded the development of Pixelated has come to an end, there is currently no / not much active development on Pixelated, but if you are interested in using Pixelated or becoming a contributor to the project, please drop us a note at <a href="mailto:pixelated-team@thoughtworks.com">pixelated-team@thoughtworks.com</a>.
+
+  </section>
+</div>

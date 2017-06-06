@@ -1,0 +1,119 @@
+
+$color-orange: #FF9C00;
+$color-orange-medium-dark: #F6A40A;
+$color-orange-dark: #FF7902;
+$color-orange-dark-transparent: rgba($color-orange-dark, 0.4);
+
+$color-turquoise: #2BA6CB;
+$color-turquoise-dark: #178CA6;
+$color-turquoise-dark-transparent: rgba($color-turquoise-dark, 0.9);
+
+
+/* general styles */
+
+body {
+  margin: 0;
+  color: #333;
+  font-family: "Open Sans","Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+}
+
+
+h2 {
+  margin-top: 1.5em;
+}
+
+a {
+  color: $color-orange;
+  text-decoration: none;
+  font-weight: bolder;
+
+  &:hover,
+  &:focus {
+    color: $color-orange-dark;
+  }
+}
+
+
+/* bands for background across viewport */
+
+.header-band, .features-band {
+  background: url(../images/hive-bg.png) repeat;
+}
+
+.logo-band, .main-band, .status-band {
+  background: white;
+}
+
+.faq-band {
+  background: #DDD;
+}
+
+
+/* content divs that have a maximum width */
+
+@mixin content-div {
+  max-width: 900px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+
+header {
+  @include content-div;
+  min-height: 40px;
+}
+
+section.logo {
+  @include content-div;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+section.features {
+  @include content-div;
+  padding-top: 120px;
+  padding-bottom: 15px;
+}
+
+main {
+  @include content-div;
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+
+section.faq, section.status {
+  @include content-div;
+  padding-top: 0.2em;
+  padding-bottom: 2em;
+}
+
+/* features section with flex boxes */
+
+section.features {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+section.features > div {
+  flex: 1 1 auto;
+  max-width: 260px;
+  margin: 0 40px 15px 0;
+
+  color: white;
+  font-weight: 600;
+}
+
+section.features > div > h2 {
+  margin-top: 0;
+}
+
+
+/* specific formatting */
+
+.welcome-img {
+  float: right;
+  margin-top: 1em;
+  margin-left: 1em;
+}
+
