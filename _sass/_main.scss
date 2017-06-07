@@ -48,6 +48,9 @@ a {
   background: #DDD;
 }
 
+.footer-band {
+  background: #AAA;
+}
 
 /* content divs that have a maximum width */
 
@@ -88,6 +91,22 @@ section.faq, section.status {
   padding-bottom: 2em;
 }
 
+footer {
+  @include content-div;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  text-align: center;
+}
+
+footer a {
+  color: black;
+
+  &:hover,
+  &:focus {
+    color: #666;
+  }
+}
+
 /* features section with flex boxes */
 
 section.features {
@@ -111,9 +130,16 @@ section.features > div > h2 {
 
 /* specific formatting */
 
+section.logo img {
+  max-width: 90%;
+}
+
 .welcome-img {
   float: right;
   margin-top: 1em;
   margin-left: 1em;
 }
 
+footer .icon {
+  height: 2em;
+}
