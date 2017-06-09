@@ -1,4 +1,6 @@
 
+$vp-small: 500px;
+
 $color-orange: #FF9C00;
 $color-orange-medium-dark: #F6A40A;
 $color-orange-dark: #FF7902;
@@ -20,6 +22,11 @@ body {
 
 h2 {
   margin-top: 1.5em;
+  margin-bottom: 0;
+}
+
+h2 + p {
+  margin-top: 0.5em;
 }
 
 a {
@@ -57,10 +64,9 @@ a {
 @mixin content-div {
   max-width: 900px;
   margin: 0 auto;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
-
 
 header {
   @include content-div;
@@ -77,6 +83,12 @@ section.features {
   @include content-div;
   padding-top: 120px;
   padding-bottom: 15px;
+}
+
+@media screen and (max-width: $vp-small) {
+  section.features {
+    padding-top: 30px;
+  }
 }
 
 main {
@@ -134,10 +146,18 @@ section.logo img {
   max-width: 90%;
 }
 
-.welcome-img {
+.welcome {
   float: right;
-  margin-top: 1em;
-  margin-left: 1em;
+  margin: 3em 1em 1em 4em;
+}
+
+
+@media screen and (max-width: $vp-small) {
+  .welcome {
+    float: none;
+    margin: 1em 4em 1em 1em;
+    text-align: center;
+  }
 }
 
 footer .icon {
